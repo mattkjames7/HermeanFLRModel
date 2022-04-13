@@ -43,3 +43,34 @@ def MSMtoFLC(x,y,z,Rsm=1.42):
 	Rnorm = R/Req
 	
 	return Req,MLTe,Rnorm
+
+def MSOtoFLC(x,y,z,Rsm=1.42):
+	'''
+	Convert Mercury Solar Orbital (MSO) coords to field line 
+	coordinates (Req, MLTe and Rnorm). This uses the KT17 model to trace
+	each point to the equator.
+	
+	Inputs
+	======
+	x : float
+		x-coordinate (Rm)
+	y : float
+		y-coordinate (Rm)
+	z : float
+		z-coordinate (Rm)
+	Rsm : float
+		Magnetopause standoff distance (Rm)
+	
+	Returns
+	=======
+	Req : float
+		Equatorial footprint of the magnetic field line (Rm)
+	MLTe : float
+		Local time of the equatorial footprint (hours)
+	Rnorm : float
+		Normalized radial distance along the field line.
+	
+	'''
+
+	#translate to MSM
+	return MSMtoFLC(x,y,z-0.19)
